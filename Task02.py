@@ -4,7 +4,11 @@ Practical Task 2:
 import numpy as np
 import pandas as pd
 
-df = pd.read_csv("D:\\Capgemini\\Pandas\\archive\\cleaned_airbnb_data.csv")
+def print_grouped_data(gdf, msg=""):
+    print(msg)
+    print(gdf)
+
+df = pd.read_csv("cleaned_airbnb_data.csv")
 
 """
 Data Selection and Filtering:

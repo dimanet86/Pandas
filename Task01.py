@@ -4,15 +4,26 @@ Practical Task 1: Basic Data Exploration and Cleaning with Pandas
 import pandas as pd
 import numpy as np
 
+def  print_dataframe_info(df, msg=""):
+    print(f'Message: {msg}')
+    print(f'Below is general info about dataframe')
+    print(df.info())
+    print(f'Number of entries is {df.size}')
+    print(f'Number of missing valuse per column: ')
+    for col in df.columns:
+        print(f'{col}: {df[col].isna().sum()}')
+
 """
 Data Loading and Initial Inspection
 """
 
-df = pd.read_csv("D:\\Capgemini\\Pandas\\archive\\AB_NYC_2019.csv")
+df = pd.read_csv("AB_NYC_2019.csv")
 
 df.head()
 
 df.info()
+
+print_dataframe_info(df, 'Hello World!') # before cleaning
 
 """
 Handling Missing Values
@@ -45,4 +56,7 @@ df['length_of_stay_category'] = df['minimum_nights'].apply(lambda x: 'short-term
 df = df[df['price'] > 0]
 
 # Saving cleaned dataset 
-df.to_csv("D:\\Capgemini\\Pandas\\archive\\cleaned_airbnb_data.csv", index=False)
+df.to_csv("cleaned_airbnb_data.csv", index=False)
+
+# Printing state of df after cleaning and manipulations
+print_dataframe_info(df)
